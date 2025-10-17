@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #c0a883; 
+   
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column; 
+    gap: 20px;            
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    min-width: 300px;
+    font-size: 25px;
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+ul {
+    list-style: none;
+}
+
+.navBar {
+    text-decoration: none;
+    color:rgb(0, 0, 0);
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.navBar:hover{
+    opacity: 1;
+    color: rgb(4, 175, 175);
+}
+
+input{
+
+    width: 100%;         
+    font-size: 15px;      
+    padding: 12px; 
+    border-radius: 8px;
+    border: 1px solid #857d7d;
+    box-sizing: border-box;
+}
+
+.enviaInfos{
+    margin-top: 10px;
+    width: 100%;
+    font-size: 20px;
+    padding: 12px; 
+    border-radius: 8px;
+    border: 1px solid #857d7d;
+    box-sizing: border-box;
+    background-color: rgb(0, 162, 255);
+    color:white;
+
+}
+
+.enviaInfos:hover{
+    background-color: rgb(0, 122, 192);
+
+}
+
+.enviaInfos:active{
+    background-color: rgb(0, 96, 151);
+
+}

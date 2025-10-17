@@ -1,0 +1,44 @@
+
+body {
+  margin: 0;
+ 
+ background-color: #c0a883; 
+}
+
+/* container branco central */
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #fff; 
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+
+.container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* tabela */
+.usuarios-tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.usuarios-tabela th,
+.usuarios-tabela td {
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  text-align: left;
+}
+
+.usuarios-tabela th {
+
+  color: rgb(0, 0, 0);
+}
+
+.usuarios-tabela tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
