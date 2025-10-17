@@ -1,10 +1,16 @@
-const express = require(`express`);
-const mongoose = require(`mongoose`);
+import express, { Request, Response } from "express"
+import mongoose from "mongoose";
+import usuarioRoutes from "./routes/usuariosRoutes.js"
+import cors from "cors";
+
+
 const app = express();
-import type { Request, Response } from "express";
 
 
-const Usuario = require(`./models/Usuario`)
+app.use(cors({
+  origin: "http://localhost:3001",
+  }));
+
 
 app.use(
     express.urlencoded({
@@ -14,28 +20,9 @@ app.use(
 
 app.use(express.json());
 
-app.post(`/Usuario`, async (req: Request, res: Response) => {
 
-    const {nome, email, cargo, dataCriacao} = req.body
 
-    const usuario = {
-        nome,
-        email,
-        cargo,
-        dataCriacao
-    }
-
-    try{
-
-        await Usuario.create(usuario)
-
-        res.status(201).json({message: 'Usuario criado com sucesso!'})
-
-    } catch(error){
-        res.status(500).json({error: error})
-    }
-
-})
+app.use(`/Usuario`, usuarioRoutes)
 
 app.get(`/`, (req: Request, res: Response) => {
     res.json({message: 'HelloWorld'})
@@ -43,6 +30,8 @@ app.get(`/`, (req: Request, res: Response) => {
 
 
 })
+
+mongoose.pluralize(null);
 
 mongoose.connect(`mongodb+srv://victorbertolanipro:victoradmin123@cruddesafio.xhlhhct.mongodb.net/?retryWrites=true&w=majority&appName=CRUDdesafio`)
 .then(() =>{
