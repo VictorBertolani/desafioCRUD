@@ -67,9 +67,10 @@ router.put('/:id', async (req: Request, res: Response) => {
 
   try {
     const usuarioAtualizado = await Usuario.findByIdAndUpdate(
-      id,
-      { nome, email, cargo },
-      { new: true } 
+            { _id: id },
+            { nome, email, cargo },
+            { new: true }
+       
     );
 
     if (!usuarioAtualizado) {
@@ -92,6 +93,7 @@ router.delete(`/:id`, async (req: Request, res: Response) =>{
     try {
         await Usuario.deleteOne({_id:id})
     } catch (error) {
+         res.status(500).json({ error });
         
     }
 
