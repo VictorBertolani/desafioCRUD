@@ -2,6 +2,7 @@ import express, { Request, Response } from "express"
 import mongoose from "mongoose";
 import usuarioRoutes from "./routes/usuariosRoutes.js"
 import cors from "cors";
+mongoose.pluralize(null);
 
 
 const app = express();
@@ -22,18 +23,17 @@ app.use(express.json());
 
 
 
-app.use(`/Usuario`, usuarioRoutes)
+app.use("/Usuario", usuarioRoutes)
 
-app.get(`/`, (req: Request, res: Response) => {
+app.get("/users", (req: Request, res: Response) => {
     res.json({message: 'HelloWorld'})
     
 
 
 })
 
-mongoose.pluralize(null);
 
-mongoose.connect(`mongodb+srv://victorbertolanipro:victoradmin123@cruddesafio.xhlhhct.mongodb.net/?retryWrites=true&w=majority&appName=CRUDdesafio`)
+mongoose.connect("mongodb+srv://victorbertolanipro:victoradmin123@cruddesafio.xhlhhct.mongodb.net/?retryWrites=true&w=majority&appName=CRUDdesafio")
 .then(() =>{
     console.log("Conectado ao MongoDB")
     app.listen(3000, () =>{
@@ -41,4 +41,3 @@ mongoose.connect(`mongodb+srv://victorbertolanipro:victoradmin123@cruddesafio.xh
     })
 })
 .catch((err: Error) => console.log(err.message))
-

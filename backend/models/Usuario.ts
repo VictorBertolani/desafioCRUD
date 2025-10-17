@@ -4,14 +4,12 @@ const UsuarioSchema = new mongoose.Schema( {
     nome: String,
     email: String,
     cargo: String,
-    dataCriacao: String, 
-}, {collection: "Usuarios"}
-
-);
+    dataCriacao: {type: Date, default: Date.now}, 
+}, {collection: "Users"});
 
 
 
-const Usuario = mongoose.model("Usuarios", UsuarioSchema, "Usuarios");
+const Usuario = mongoose.model("Users", UsuarioSchema);
 
 
 

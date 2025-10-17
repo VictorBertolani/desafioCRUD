@@ -13,13 +13,13 @@ interface IUsuario {
 
 router.post(`/`, async (req: Request, res: Response) => {
 
-    const {nome, email, cargo, dataCriacao} = req.body
+    const {nome, email, cargo} = req.body
 
     const usuario = {
         nome,
         email,
         cargo,
-        dataCriacao
+        dataCriacao: new Date(),
     }
 
     try{
@@ -29,7 +29,7 @@ router.post(`/`, async (req: Request, res: Response) => {
         res.status(201).json({message: 'Usuario criado com sucesso!'})
 
     } catch(error){
-        res.status(500).json({error: error})
+        res.status(500).json({message: 'Falha no Servidor!'})
     }
 
 })
@@ -50,31 +50,38 @@ router.get(`/:id`, async (req: Request, res: Response) =>{
 
     try {
         const usuario = await Usuario.findOne({_id: id});
+         if (!usuario) {
+            return res.status(404).json({ message: 'Usuário não encontrado' });
+        }
+        res.status(200).json(usuario); 
         
     } catch (error) {
+        res.status(500).json({ error });
         
     }
 })
 
-router.put(`/:id`, async (req: Request, res: Response) =>{
+router.put('/:id', async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const { nome, email, cargo } = req.body;
 
-    const id = req.params.id;
+  try {
+    const usuarioAtualizado = await Usuario.findByIdAndUpdate(
+      id,
+      { nome, email, cargo },
+      { new: true } 
+    );
 
-    const {nome, email, cargo, dataCriacao} = req.body
-
-    const usuario = {
-        nome,
-        email,
-        cargo,
-        dataCriacao
+    if (!usuarioAtualizado) {
+      return res.status(404).json({ message: 'Usuário não encontrado' });
     }
 
-    try {
-        const usuarioAtualizado = await Usuario.updateOne({_id: id, usuario})
-    } catch (error) {
-        
-    }
-})
+    res.status(200).json(usuarioAtualizado); 
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+});
+
 
 router.delete(`/:id`, async (req: Request, res: Response) =>{
 
