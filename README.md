@@ -13,6 +13,8 @@ em types temos uma interface para uso padrao do usuario
 
 o restante dos arquivos sao configuraçoes do code, node.js, typescript, express e mongoDb
 
-para iniciar o servidor acesse pelo terminal a pasta desafioCRUD\backend e digite npm run dev ou npm ts-node server.ts
+de começo, na pasta desafioCRUD rode npm init -y, npm install -g typescript
+
+para iniciar o servidor acesse pelo terminal a pasta desafioCRUD\backend e digite npm install express mongoose, npm install mongodb, e para iniciar npm run dev ou npx ts-node server.ts
 
 para iniciar a aplicaçao, acesse a pasta desafioCRUD\frontend e digite npm start
